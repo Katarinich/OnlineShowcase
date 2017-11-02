@@ -1,3 +1,14 @@
 {
-  "presets": ["es2015", "stage-0", "react"] //поддержка ES2015, ES7 и JSX
+  "presets": [
+    ["env", { "modules": false }],
+    "stage-2", "es2015"
+  ],
+  "plugins": ["transform-runtime"],
+  "comments": false,
+  "env": {
+    "test": {
+      "presets": ["env", "stage-2", "es2015"],
+      "plugins": [ "istanbul" ]
+    }
+  }
 }
