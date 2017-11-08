@@ -29,6 +29,8 @@ module.exports = {
     'semi': ['error', 'never'],
     "comma-dangle": ["warn", "never"],
     "linebreak-style": ["warn", "windows"],
+    "no-unused-vars": ["warn"],
+    "spaced-comment": ["off"], 
     
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {

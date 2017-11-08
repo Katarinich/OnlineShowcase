@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import createLogger from 'vuex/dist/logger'
 
 import categories from './modules/categories'
+import products from './modules/products'
 
 Vue.use(Vuex)
 
@@ -10,7 +11,8 @@ const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
   modules: {
-    categories
+    categories,
+    products
   },
   strict: debug,
   plugins: debug ? [createLogger()] : []

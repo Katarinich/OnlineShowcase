@@ -39,5 +39,10 @@ export default [
       path: 'new',
       name: 'categories.new'
     }]
+  },
+
+  {
+    path: '/categories/:categoryId',
+    component: () => import('@/pages/Home/Index')
   }
 ]
