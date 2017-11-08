@@ -1,5 +1,3 @@
-import config from '../../config'
-
 const filesPath = 'files/'
 
 class UrlBuilderClass {
@@ -31,9 +29,5 @@ class UrlBuilderClass {
   }
 }
 
-const currentConfigKey = Object.keys(config).find(key =>
-  config[key].env.NODE_ENV === `"${process.env.NODE_ENV}"`
-)
-
-const UrlBuilder = new UrlBuilderClass(config[currentConfigKey].env.API_LOCATION)
+const UrlBuilder = new UrlBuilderClass(process.env.API_LOCATION)
 export default UrlBuilder
