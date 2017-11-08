@@ -12,7 +12,8 @@ export default [
 
   {
     path: '/aboutus',
-    name: 'aboutus.index'
+    name: 'aboutus.index',
+    component: () => import('@/pages/AboutUs/Index')
   },
 
   {
