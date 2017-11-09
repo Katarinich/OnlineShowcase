@@ -18,7 +18,8 @@ export default [
 
   {
     path: '/contactus',
-    name: 'contactus.index'
+    name: 'contactus.index',
+    component: () => import('@/pages/ContactUs/Index')
   },
 
   {

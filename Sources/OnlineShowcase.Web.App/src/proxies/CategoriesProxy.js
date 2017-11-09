@@ -1,9 +1,9 @@
 import Proxy from './Proxy'
 
-class AccountProxy extends Proxy {
+class CategoresProxy extends Proxy {
   constructor(parameters = {}) {
     super('categories', parameters)
   }
 }
 
-export default AccountProxy
+export default CategoresProxy

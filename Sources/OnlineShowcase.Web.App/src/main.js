@@ -4,6 +4,7 @@ import './plugins/vuex'
 import './plugins/axios'
 import { router } from './plugins/vue-router'
 import './plugins/vuex-router-sync'
+import './plugins/vee-validations'
 
 import App from './App'
 import store from './store'

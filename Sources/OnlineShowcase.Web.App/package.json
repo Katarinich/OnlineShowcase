@@ -11,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.16.2",
+    "vee-validate": "^2.0.0-rc.21",
     "vue": "^2.4.2",
     "vue-infinite-scroll": "^2.0.2",
     "vue-router": "^2.7.0",
