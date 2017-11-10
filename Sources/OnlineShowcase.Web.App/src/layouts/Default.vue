@@ -20,12 +20,12 @@
 
               <div class='header-bottom-right'>
                   <div class='account'>
-                    <a v-if="isAuthenticated"><span> </span>{{$store.state.user.name}}</a>
+                    <a v-if="isAuthenticated"><span> </span>{{$store.state.user.profile.name}}</a>
                     <a v-else><span> </span>Guest</a>
                   </div>
 
                   <ul class='login'>
-                    <li v-if="!isAuthenticated"><router-link :to="{ name: 'login.index' }"><span> </span>Login or Sign Up</router-link></li>
+                    <li v-if="!isAuthenticated"><a @click.prevent="login"><span> </span>Login or Sign Up</a></li>
                     <li v-else><router-link :to="{ name: 'logout.index' }"><span> </span>Sign Out</router-link></li>
                   </ul>
                   <div class='clearfix'> </div>
@@ -49,6 +49,10 @@
 </template>
 
 <script>
+  import Vue from 'vue'
+  import Auth0Lock from 'auth0-lock'
+  import toastr from 'toastr'
+
   import CategoryList from '../components/CategoryList'
 
   export default {
@@ -57,12 +61,50 @@
     data() {
       return {
         isEditMode: false,
-        isAuthenticated: false
+        lock: new Auth0Lock(process.env.CLIENT_ID, process.env.AUTH_DOMAIN, {
+          autoclose: true,
+          auth: {
+            responseType: 'token id_token',
+            params: {
+              scope: 'openid'
+            }
+          }
+        })
       }
     },
 
     components: {
       CategoryList
+    },
+
+    computed: {
+      isAuthenticated() {
+        return this.$store.getters['user/isAuthenticated']
+      }
+    },
+
+    mounted() {
+      Vue.nextTick(() => {
+        this.lock.on('authenticated', authResult => {
+          this.lock.getUserInfo(authResult.accessToken, (error, profile) => {
+            if (error) {
+              return
+            }
+
+            this.$store.dispatch('user/set', { profile, token: authResult.idToken })
+          })
+        })
+
+        this.lock.on('authorization_error', error => {
+          toastr.error(error)
+        })
+      })
+    },
+
+    methods: {
+      login() {
+        this.lock.show()
+      }
     }
   }
 </script>

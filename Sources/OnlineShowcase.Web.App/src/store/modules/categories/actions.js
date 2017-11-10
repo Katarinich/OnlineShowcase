@@ -1,3 +1,5 @@
+import toastr from 'toastr'
+
 import * as types from './mutation-types'
 import Proxy from '../../../proxies/CategoriesProxy'
 
@@ -7,8 +9,8 @@ export const all = ({ commit }) => {
     .then((response) => {
       commit(types.ALL, response)
     })
-    .catch(() => {
-      // console.log('Request failed...')
+    .catch(error => {
+      toastr.error(error)
     })
 }
 

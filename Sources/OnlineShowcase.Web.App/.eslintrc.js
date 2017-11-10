@@ -31,6 +31,10 @@ module.exports = {
     "linebreak-style": ["warn", "windows"],
     "no-unused-vars": ["warn"],
     "spaced-comment": ["off"], 
+    "class-methods-use-this": ["off"],
+    "prefer-arrow-callback": ["off"],
+    "arrow-parens": ["off"],
+    "no-nested-ternary": ["off"],
     
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {

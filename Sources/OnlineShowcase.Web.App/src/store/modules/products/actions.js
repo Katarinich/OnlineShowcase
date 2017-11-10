@@ -1,3 +1,5 @@
+import toastr from 'toastr'
+
 import * as types from './mutation-types'
 import Proxy from '../../../proxies/ProductsProxy'
 
@@ -39,8 +41,8 @@ export const all = ({ commit, state }, filter, force) => {
     .then((response) => {
       commit(types.ALL, { response, newfilter, filter })
     })
-    .catch(() => {
-      // console.log('Request failed...')
+    .catch(error => {
+      toastr.error(error)
     })
 }
 

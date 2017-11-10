@@ -5,6 +5,7 @@ import createLogger from 'vuex/dist/logger'
 import categories from './modules/categories'
 import products from './modules/products'
 import notifications from './modules/notifications'
+import user from './modules/user'
 
 Vue.use(Vuex)
 
@@ -14,7 +15,8 @@ export default new Vuex.Store({
   modules: {
     notifications,
     categories,
-    products
+    products,
+    user
   },
   strict: debug,
   plugins: debug ? [createLogger()] : []

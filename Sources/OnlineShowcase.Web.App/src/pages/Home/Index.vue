@@ -19,7 +19,6 @@
         <div 
           v-infinite-scroll="loadMore" 
           :infinite-scroll-disabled="!model.hasMore" 
-          infinite-scroll-distance="10"
           :infinite-scroll-immediate-check="false"
           :infinite-scroll-listen-for-event="true"
         >

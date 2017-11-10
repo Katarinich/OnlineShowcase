@@ -6,8 +6,8 @@ export default [
   },
 
   {
-    path: '/login',
-    name: 'login.index'
+    path: '/access_token=:token',
+    component: () => import('@/pages/Home/Index')
   },
 
   {

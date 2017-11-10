@@ -1,7 +1,7 @@
 export default {
   filter: {
     skip: 0,
-    take: 6,
+    take: 7,
     sort: 'popular'
   },
   found: null,
