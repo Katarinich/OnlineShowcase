@@ -2,12 +2,12 @@
   <ul class="menu">
     <template v-for="category in categories.list">
       <li :key="category.id">
-        <manage-icons base-path="`categories/${category.id}`" />
+        <manage-icons :base-path="`categories/${category.id}`" />
         <router-link :to="{ path: `/categories/${category.id}` }">
           {{ category.name }}
 
           <img 
-            v-if="category.children.length > 0" 
+            v-if="hasSubMenu(category)" 
             class="arrow-img" 
             src="../../static/images/arrow1.png" 
             alt="" 
@@ -15,12 +15,12 @@
         </router-link>
 
         <ul
-          v-if="category.children.length > 0"
+          v-if="hasSubMenu(category)"
           class="cute"
         >
           <template v-for="child in category.children">
             <li :key="child.id">
-              <manage-icons base-path="`categories/${child.id}`" />
+              <manage-icons :base-path="`categories/${child.id}`" />
               <router-link :to="{ path: `/categories/${child.id}` }">{{ child.name }}</router-link>
             </li>
           </template>
@@ -52,6 +52,18 @@
 
     components: {
       ManageIcons
+    },
+
+    computed: {
+      isEditMode() {
+        return this.$store.getters['user/isContentEditor']
+      }
+    },
+
+    methods: {
+      hasSubMenu(category) {
+        return category.children.length > 0 || this.isEditMode
+      }
     },
 
     created() {

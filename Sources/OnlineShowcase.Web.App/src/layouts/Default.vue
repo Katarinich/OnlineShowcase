@@ -19,16 +19,16 @@
               </div>
 
               <div class='header-bottom-right'>
-                  <div class='account'>
-                    <a v-if="isAuthenticated"><span> </span>{{$store.state.user.profile.name}}</a>
-                    <a v-else><span> </span>Guest</a>
-                  </div>
+                <div class='account'>
+                  <a v-if="isAuthenticated"><span> </span>{{$store.state.user.profile.name}}</a>
+                  <a v-else><span> </span>Guest</a>
+                </div>
 
-                  <ul class='login'>
-                    <li v-if="!isAuthenticated"><a @click.prevent="login"><span> </span>Login or Sign Up</a></li>
-                    <li v-else><router-link :to="{ name: 'logout.index' }"><span> </span>Sign Out</router-link></li>
-                  </ul>
-                  <div class='clearfix'> </div>
+                <ul class='login'>
+                  <li v-if="!isAuthenticated"><a @click.prevent="login"><span> </span>Login or Sign Up</a></li>
+                  <li v-else><router-link :to="{ name: 'logout.index' }"><span> </span>Sign Out</router-link></li>
+                </ul>
+                <div class='clearfix'> </div>
               </div>
               <div class='clearfix'> </div>
           </div>
@@ -60,7 +60,6 @@
 
     data() {
       return {
-        isEditMode: false,
         lock: new Auth0Lock(process.env.CLIENT_ID, process.env.AUTH_DOMAIN, {
           autoclose: true,
           auth: {
@@ -80,6 +79,9 @@
     computed: {
       isAuthenticated() {
         return this.$store.getters['user/isAuthenticated']
+      },
+      isEditMode() {
+        return this.$store.getters['user/isContentEditor']
       }
     },
 

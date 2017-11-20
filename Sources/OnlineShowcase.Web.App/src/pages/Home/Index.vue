@@ -25,7 +25,7 @@
           <template v-if="products.found">
             <template v-for="product in products.found.products">
               <div class="product-grid" :key="product.id">
-                <manage-icons base-path="`products/${product.id}`" />
+                <manage-icons :base-path="`products/${product.id}`" />
                 <div class="content_box">
                   <router-link :to="{ path: `products/${product.id}` }">
                     <div class="left-grid-view grid-view-left">
