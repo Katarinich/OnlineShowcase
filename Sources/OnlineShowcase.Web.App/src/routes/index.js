@@ -1,4 +1,10 @@
-export default [
+const withPrefix = (prefix, routes) =>
+  routes.map(route => {
+    route.path = prefix + route.path
+    return route
+  })
+
+const routes = [
   {
     path: '/',
     name: 'home.index',
@@ -27,24 +33,29 @@ export default [
     name: 'logout.index'
   },
 
-  {
-    path: '/products',
-    children: [{
-      path: 'new',
-      name: 'products.new'
-    }]
-  },
-
-  {
-    path: '/categories',
-    children: [{
-      path: 'new',
+  ...withPrefix('/categories', [
+    {
+      path: '/:categoryId',
+      name: 'category.show',
+      component: () => import('@/pages/Home/Index')
+    },
+    {
+      path: '/new',
       name: 'categories.new'
-    }]
-  },
+    }
+  ]),
 
-  {
-    path: '/categories/:categoryId',
-    component: () => import('@/pages/Home/Index')
-  }
+  ...withPrefix('/products', [
+    {
+      path: '/:productId',
+      name: 'product.show',
+      component: () => import('@/pages/Product/Index')
+    },
+    {
+      path: '/new',
+      name: 'products.new'
+    }
+  ])
 ]
+
+export default routes

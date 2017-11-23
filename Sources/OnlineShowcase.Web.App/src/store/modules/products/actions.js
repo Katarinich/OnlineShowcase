@@ -46,6 +46,18 @@ export const all = ({ commit, state }, filter, force) => {
     })
 }
 
+export const find = ({ commit, state }, id) => {
+  new Proxy()
+  .find(id)
+  .then((response) => {
+    commit(types.FIND, { response })
+  })
+  .catch(error => {
+    toastr.error(error)
+  })
+}
+
 export default {
-  all
+  all,
+  find
 }

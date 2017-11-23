@@ -8,5 +8,6 @@ export default {
   sorts: {
     new: 'created:desc',
     popular: 'viewcount:desc'
-  }
+  },
+  product: {}
 }

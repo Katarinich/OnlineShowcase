@@ -1,4 +1,4 @@
-import { ALL } from './mutation-types'
+import { ALL, FIND } from './mutation-types'
 
 export default {
   [ALL](state, { response, newfilter, filter }) {
@@ -11,5 +11,8 @@ export default {
       products: newProducts,
       filter: newfilter
     }
+  },
+  [FIND](state, { response }) {
+    state.product = response
   }
 }
