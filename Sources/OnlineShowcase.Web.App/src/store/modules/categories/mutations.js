@@ -1,6 +1,9 @@
-import { ALL } from './mutation-types'
+import { ALL, SET_LOADING } from './mutation-types'
 
 export default {
+  [SET_LOADING](state, loading) {
+    state.isCategoriesLoading = loading
+  },
   [ALL](state, categories) {
     state.list = categories
 

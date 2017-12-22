@@ -35,6 +35,7 @@ module.exports = {
     "prefer-arrow-callback": ["off"],
     "arrow-parens": ["off"],
     "no-nested-ternary": ["off"],
+    "max-len": ["off"],    
     
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {

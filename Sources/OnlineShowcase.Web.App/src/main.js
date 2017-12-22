@@ -13,6 +13,7 @@ import './assets/css/bootstrap.css'
 import './assets/css/style.css'
 import './assets/css/form.css'
 import './assets/css/toastr.css'
+import './assets/css/loader.scss'
 
 Vue.config.productionTip = false
 
